@@ -39,8 +39,6 @@ section.gray {
   .lr{display:flex;justify-content: center;align-items: center;gap:6rem;}
 </style>
 
----
-
 # 前端特效：不都國中數學
 
 毛哥 EM @SITCON 2025
@@ -303,6 +301,14 @@ div {
 
 ---
 
+Cubic Bézier 二次貝茲曲線
+
+![w:700](img/Bézier_3_big.gif)
+
+額這不是國中數學
+
+---
+
 > Apple:
 > ❌ ease
 > ✅ gravity
@@ -322,6 +328,11 @@ div {
 ![w:900](img/ios-app-diff.png)
 
 將工業設計中的曲線連續概念應用到了視覺設計之上，更圓滑，無明顯切角。
+
+
+---
+
+![bg contain](img/applesite.webp)
 
 ---
 
@@ -376,6 +387,38 @@ animation: spin 2s linear forwards;
 ## 範例
 
 ![bg](img/dvd.gif)
+
+---
+
+```css
+@keyframes horizontal {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(100vw - 100%));
+    }
+}
+```
+
+...
+
+---
+
+#### 疊起來
+
+```css
+
+div {
+    animation:
+        horizontal 2.6s infinite linear alternate,
+        vertical 2s infinite linear alternate,
+        colorX 26s infinite steps(10),
+        colorY 14s infinite steps(7);
+
+    animation-composition: accumulate;
+}
+```
 
 ---
 
@@ -660,13 +703,26 @@ window.addEventListener('scroll', function() {
 
 ## 不要躲在下面動
 
+```css
+div{
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+div.active{
+    opacity: 1;
+}
+```
+
+---
+
 ```js
-function isElementInViewport(el) {
+function isElementInViewport(el) { //在嗎？
     const rect = el.getBoundingClientRect();
     return rect.bottom < 0 || rect.top > window.innerHeight;
 }
 
-function addClassToVisibleElements() {
+function addClassToVisibleElements() { //加 class
     var aosElements = document.querySelectorAll(".aos");
     aosElements.forEach(function (aosElement) {
         if (!isElementInViewport(aosElement)) aosElement.classList.add("ed");
@@ -674,8 +730,8 @@ function addClassToVisibleElements() {
     });
 }
 
-document.addEventListener("scroll", addClassToVisibleElements);
-addClassToVisibleElements();
+document.addEventListener("scroll", addClassToVisibleElements); //滾動時檢查
+addClassToVisibleElements(); //一開始檢查
 ```
 
 
@@ -693,10 +749,81 @@ emtech.cc 動畫計算
 
 ---
 
+## 一定得 JavaScript？
+
+日本 CodePen 作者 Yusuke Nakaya 的作品
+
+![bg](img/move.gif)
+
+---
+
+```css
+div:hover{
+
+}
+```
+
+---
+
+```html
+div*100
+```
+
+---
+
+```html
+div*100000000
+```
+
+---
+
+```css
+@for $i from 0 through 100{
+     
+    $x: $i % 10;
+    $y: ($i - $x) / 10;
+     
+    .position:nth-child(#{$i + 1}):hover ~ .ball {
+        top: #{$y * 10}vh;
+        left: #{$x * 10}vw;
+    }
+}
+```
+
+---
+
+我們使用100個元素，將整個頁面鋪滿，懸停的時間，顯示顏色。
+
+![w:900](img/mose-move-css.gif)
+
+
+---
+
+> *瀏覽器：我也真是謝謝你*
+
+
+![bg opacity:.3](img/move.gif)
+
+---
+
 ## 案例分析
 
 -   [ChainGPT Labs](https://labs.chaingpt.org/)
 -   [Dropbox](https://brand.dropbox.com/)
+
+---
+
+> 你覺得程式跟解題用到的數學差在哪？
+> -交大特選面試題
+
+---
+
+> 咱們之後專門做一個演講來講解。
+
+---
+
+
+> 多點想法、多點思考、多點發散的空間總是好的。
 
 ---
 
@@ -709,14 +836,3 @@ emtech.cc 動畫計算
 毛哥 EM 資訊密技：[emtech.cc](https://emtech.cc)
 
 </div>
-
----
-
-開關
-
-案例原理拆解 (10 分鐘)
-ChainGPT Labs
-Dropbox
-問答與互動 (10 分鐘)
-結論
-交大教授：題目跟程式用到的數學差在哪？
