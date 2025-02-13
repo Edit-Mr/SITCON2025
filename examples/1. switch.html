@@ -1,0 +1,59 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Switch</title>
+        <style>
+            body{
+                /* 置中 */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background-color: #141C2E;
+            }
+
+            /* 隱藏勾選框 */
+            input[type="checkbox"] {
+                display: none;
+            }
+
+            input[type="checkbox"] + label {
+                display: block;
+                width: 50px;
+                height: 25px;
+                background-color: #ccc;
+                border-radius: 25px;
+                position: relative;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+            input[type="checkbox"]:checked + label {
+                background-color: #2196f3;
+            }
+
+            input[type="checkbox"] + label::before {
+                content: "";
+                position: absolute;
+                width: 25px;
+                height: 25px;
+                background-color: #fff;
+                border-radius: 50%;
+                left: 0;
+                transition: 0.3s;
+            }
+
+            input[type="checkbox"]:checked + label::before {
+                left: 25px;
+            }
+        </style>
+    </head>
+    <body>
+        <input type="checkbox" name="" id="checkbox" />
+        <label for="checkbox"></label>
+    </body>
+</html>
