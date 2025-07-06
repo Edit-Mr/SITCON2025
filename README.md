@@ -6,7 +6,7 @@
 > 🕓 16:05 - 16:45 📍 R0  
 > [SITCON 官網介紹](https://sitcon.org/2025/agenda/aa71e5/)
 
-<img width=200px src="img/不都國中數學.webp">
+<img width=400px src="img/不都國中數學.webp">
 
 > *這個議程的主題也參考自草東沒有派對的演唱會：不都媽生的。*
 
